@@ -2,19 +2,19 @@
 
 **DESCRIPTION**
 
-Objective: Make a model to predict the app rating, with other information about the app provided.
+**Objective**:Make a model to predict the app rating, with other information about the app provided.
 
-Problem Statement:
+**Problem Statement:**
 
 Google Play Store team is about to launch a new feature wherein, certain apps that are promising, are boosted in visibility. The boost will manifest in multiple ways including higher priority in recommendations sections (“Similar apps”, “You might also like”, “New and updated games”). These will also get a boost in search results visibility.  This feature will help bring more attention to newer apps that have the potential.
 
-Domain: General
+**Domain:** General
 
-Analysis to be done: The problem is to identify the apps that are going to be good for Google to promote. App ratings, which are provided by the customers, is always a great indicator of the goodness of the app. The problem reduces to: predict which apps will have high ratings.
+**Analysis to be done:** The problem is to identify the apps that are going to be good for Google to promote. App ratings, which are provided by the customers, is always a great indicator of the goodness of the app. The problem reduces to: predict which apps will have high ratings.
 
-Content: Dataset: Google Play Store data (“googleplaystore.csv”)
+**Content: Dataset: Google Play Store data (“googleplaystore.csv”)**
 
-Fields in the data –
+**Fields in the data –**
 
 App: Application name
 
@@ -44,7 +44,7 @@ Android Ver: Minimum required Android version
 
  
 
-Steps to perform:
+**Steps to perform:**
 
 Load the data file using pandas. 
 
