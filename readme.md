@@ -30,20 +30,44 @@ X_train,X_valid,y_train,y_valid = train_test_split(X_encoded,y,test_size= 0.2,ra
 ```
 After that we scaled the training and validation data using the **StandardScaler**.
 
-We created a preliminary logisticRegression model using **k-fold cross validation** for validating our model and we used 'C' parameter as the regularization parameter. We also used **class-weight** parameter which actually didn't aid us much so later on removed it.
+### **Balancing the imbalanced data and performing the training**<br>
 
-```python
-# Model building using logistic regression
-lr = LogisticRegression()
+We used the cocept of random oversampling to increase the number of minority class. Random oversampling involves randomly selecting examples from the minority class, with replacement, and adding them to the training dataset. 
 
-# Creating hyperparameter tuning for implementing cross validation
-grid = {'C':10.0 ** np.arange(-2,3)}
-cv = KFold(n_splits=5,shuffle= False,random_state = None)
 
-clf = GridSearchCV(lr,grid,cv = cv,n_jobs = -1, scoring = 'accuracy')
-clf.fit(x_train_std,y_train)
+``` python
+from imblearn.over_sampling import RandomOverSampler
+from collections import Counter
+
+os = RandomOverSampler(0.5)
+X_train_ns,y_train_ns = os.fit_resample(x_train_std,y_train)
+print("The number of classes before fit{}".format(Counter(y_train)))
+print("The number of classes after fit{}".format(Counter(y_train_ns)))
 
 ```
+
+### Took sample to decrease runtime.
+Again splited the train dataset into Sample(20%) and Remaining(80%)
+
+#split train data to take sample.
+
+X_train_rem, X_train_sample, y_train_rem, y_train_sample = train_test_split(X_train_ns, y_train_ns, test_size=0.2, random_state=42) 
+
+After we took the sample, fit the **KNeighborsClassifier** 
+neighbors= np.arange(1,5)
+train_accuracy = np.empty(len(neighbors))
+test_accuracy = np.empty(len(neighbors))
+
+#loop over K values
+for i, k in enumerate(neighbors):
+    knn = KNeighborsClassifier(n_neighbors=k)
+    knn.fit(X_train_sample, y_train_sample)
+    
+    # compute training and test data accuracy
+    train_accuracy[i] = knn.score(X_train_sample, y_train_sample)
+    test_accuracy[i] = knn.score(X_valid_std, y_valid)
+
+
 
 ### **Model Analysis:**
 
@@ -63,21 +87,7 @@ From any company's point of view predicting prepaid when it is actually not is k
 From the report it's clear that the value of precision, recall and  f1 score is quite low for the class label 0 whereas for class label 1 it's pretty high.
 
 
-### **Balancing the imbalanced data and performing the training**<br>
 
-We used the cocept of random oversampling to increase the number of minority class. Random oversampling involves randomly selecting examples from the minority class, with replacement, and adding them to the training dataset. 
-
-
-``` python
-from imblearn.over_sampling import RandomOverSampler
-from collections import Counter
-
-os = RandomOverSampler(0.5)
-X_train_ns,y_train_ns = os.fit_resample(x_train_std,y_train)
-print("The number of classes before fit{}".format(Counter(y_train)))
-print("The number of classes after fit{}".format(Counter(y_train_ns)))
-
-```
 
 **Result:**
 
