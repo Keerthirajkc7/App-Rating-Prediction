@@ -100,12 +100,7 @@ From the report it's clear that the value of precision, recall and  f1 score is 
        False       0.22      0.54      0.31      3656
         True       0.98      0.92      0.95     82705
 
-    accuracy                           0.90     86361
-   macro avg       0.60      0.73      0.63     86361
-weighted avg       0.95      0.90      0.92     86361
-
-[ ]
-
+ 
 
 
 
