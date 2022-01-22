@@ -19,7 +19,7 @@ In the dataset we make the use of 27datacolumns.
 
 ### <b> Description of the first Model </b><br><br>
 
-We used **Logistic Regression** as the first algorithm to train our dataset.
+We used **K-nearest neighbors Algorithm** as the second algorithm to train our dataset.
 
 After doing the necessary **EDA** and **Data Preprocessing** we splited our model into train test sets 
 
