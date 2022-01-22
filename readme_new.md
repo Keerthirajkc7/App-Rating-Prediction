@@ -74,6 +74,12 @@ for i, k in enumerate(neighbors):
     test_accuracy[i] = knn.score(X_valid_std, y_valid)
 ```
 
+Graphical representation to check the accuracy level for different values.
+![image](https://user-images.githubusercontent.com/89681388/150632733-1a59f579-43f1-4e21-ac5c-239bac16edad.png)
+
+The accuracy is high when the KNeighborsClassifier is 1.
+Again we fit the KNeighborsClassifier for X_train_sample, y_train_sample. (train data)
+And check the score for X_valid_std,y_valid. (test data)
 
 ### **Model Analysis:**
 
@@ -82,41 +88,21 @@ we used confusion matrix and classification report to analyze the performance of
 **Result of confusion matrix:**
 
 
-In case of confusion metric we can see that our model is correctly able to classify **81752(True positive**) and **1608(True Negative)** Value. But we have pretty decent number of **False Negative(953)** and **False positive(2048)** falsely classified by our model. **In our case we need to try to reduce the number of false positive because classifying a non-prepaid value as prepaid can result in more loss to the bank** than the otherway analogy. Also our data is highly imbalanced that could also be one reason why our model is performing that way. So we will also try balancing out the data set to see if will get some improvement.
-
-From any company's point of view predicting prepaid when it is actually not is kind of more dangerous and we can see that our model has falsely classified a lot of unprepaid value as prepaid. So we also need to try to **reduce the false positive**.
-
+In case of confusion metric we can see that our model is correctly able to classify **75712(True positive**) and **1985(True Negative)** Value. But we have pretty decent number of **False Negative(1671)** and **False positive(6993)** falsely classified by our model. 
 
 **Result of classification Report**
 
 
 From the report it's clear that the value of precision, recall and  f1 score is quite low for the class label 0 whereas for class label 1 it's pretty high.
 
+                precision    recall  f1-score   support
 
+       False       0.22      0.54      0.31      3656
+        True       0.98      0.92      0.95     82705
 
-
-**Result:**
-
-```
-The number of classes before fitCounter({True: 330873, False: 14569})
-The number of classes after fitCounter({True: 330873, False: 165436})
-
-```
-
-Then we applied the similar model training approach like above and perform everything from the beginning.
-
-
-### **Performance Analysis of the model after balancing the dataset**
-
-We also used the technique of SMOTE in order to perform the data balance. But the performance of this technique was not as good as random oversampling.
-
-Random Oversamping was better than SMOTE technique because:
-
-* It's computational speed was exceptionally good than SMOTE.
-* We were also able to get good recall and were able to decrease the false positive and has a good f1-score using **random over sampler** but in case of **SMOTE** the result for f1 score is worst.
-
-
-
+    accuracy                           0.90     86361
+   macro avg       0.60      0.73      0.63     86361
+weighted avg       0.95      0.90      0.92     86361
 
 
 
