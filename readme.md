@@ -50,10 +50,16 @@ print("The number of classes after fit{}".format(Counter(y_train_ns)))
 Again splited the train dataset into Sample(20%) and Remaining(80%)
 
 #split train data to take sample.
+```python
 
 X_train_rem, X_train_sample, y_train_rem, y_train_sample = train_test_split(X_train_ns, y_train_ns, test_size=0.2, random_state=42) 
 
+
+```
 After we took the sample, fit the **KNeighborsClassifier** 
+
+```python
+
 neighbors= np.arange(1,5)
 train_accuracy = np.empty(len(neighbors))
 test_accuracy = np.empty(len(neighbors))
@@ -66,7 +72,7 @@ for i, k in enumerate(neighbors):
     # compute training and test data accuracy
     train_accuracy[i] = knn.score(X_train_sample, y_train_sample)
     test_accuracy[i] = knn.score(X_valid_std, y_valid)
-
+```
 
 
 ### **Model Analysis:**
