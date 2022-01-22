@@ -95,7 +95,7 @@ In case of confusion metric we can see that our model is correctly able to class
 
 From the report it's clear that the value of precision, recall and  f1 score is quite low for the class label 0 whereas for class label 1 it's pretty high.
 
-                precision    recall  f1-score   support
+              precision    recall  f1-score   support
 
        False       0.22      0.54      0.31      3656
         True       0.98      0.92      0.95     82705
@@ -103,6 +103,8 @@ From the report it's clear that the value of precision, recall and  f1 score is 
     accuracy                           0.90     86361
    macro avg       0.60      0.73      0.63     86361
 weighted avg       0.95      0.90      0.92     86361
+
+[ ]
 
 
 
